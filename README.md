@@ -14,6 +14,7 @@ XRISM project looking at high resolution X-ray spectra
 - [XRISM data analysis](https://heasarc.gsfc.nasa.gov/docs/xrism/analysis/index.html) web page.
 - We will have to make sure we're using the latest version of [HEASoft](https://heasarc.gsfc.nasa.gov/docs/software/heasoft/).
 - [Early release science data](https://heasarc.gsfc.nasa.gov/docs/xrism/results/erdata/index.html).
+- We can use [SpectralFitting.jl](https://github.com/fjebaker/SpectralFitting.jl) to fit the spectra (here is the [documentation](https://fjebaker.github.io/SpectralFitting.jl/dev/))
 
 ## Science
 
