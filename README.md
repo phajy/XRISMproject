@@ -19,3 +19,4 @@ XRISM project looking at high resolution X-ray spectra
 ## Science
 
 - [XRISM Spectroscopy of the Fe Kα Emission Line in the Seyfert AGN NGC 4151 Reveals the Disk, Broad Line Region, and Torus](https://ui.adsabs.harvard.edu/abs/2024arXiv240814300X) by the XRISM Collaboration, et al. (2024).
+- Hitomi paper on [The quiescent intracluster medium in the core of the Perseus cluster](https://ui.adsabs.harvard.edu/abs/2016Natur.535..117H/abstract). This is the only micro-calorimeter data that we have prior to the launch of XRISM. Sadly, the Hitomi mission was lost shortly after these data were taken.
