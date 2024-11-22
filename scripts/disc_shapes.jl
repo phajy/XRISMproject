@@ -28,6 +28,8 @@ d = ThickDisc() do ρ
     end
 end
 
+Gradus.inner_radius(d::typeof(d)) = r_isco
+
 pl_int = interpolate_plunging_velocities(m)
 redshift = interpolate_redshift(pl_int, x)
 pf = redshift ∘ ConstPointFunctions.filter_intersected()
@@ -50,7 +52,13 @@ heatmap(α, β, img, aspect_ratio=1)
 ε(r) = r^(-3)
 
 # g grid
-gs = range(0.7, 1.1, 500)
+gs = range(0.1, 1.5, 150)
 
 # do flux integration for broad line
-# _, flux_broad = lineprofile(gs, ε, m, x, d, verbose = true)
+ _, flux_broad = lineprofile(gs, ε, m, x, d, verbose = true, method = BinningMethod())
+
+ plot(gs, flux_broad)
+
+ # it would be interesting to compare with the equivalent thin disc
+ _, flux_thin_disc = lineprofile(gs, ε, m, x, ThinDisc(r_isco, r_out), verbose = true, method = BinningMethod())
+ plot!(gs, flux_thin_disc)
