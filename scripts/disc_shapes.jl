@@ -55,10 +55,12 @@ heatmap(α, β, img, aspect_ratio=1)
 gs = range(0.1, 1.5, 150)
 
 # do flux integration for broad line
- _, flux_broad = lineprofile(gs, ε, m, x, d, verbose = true, method = BinningMethod())
+_, flux_broad = lineprofile(gs, ε, m, x, d, verbose = true, β₀ = 2.0)
+_, flux_broad_binning = lineprofile(gs, ε, m, x, d, verbose = true, method = BinningMethod())
 
  plot(gs, flux_broad)
+ plot!(gs, flux_broad_binning)
 
  # it would be interesting to compare with the equivalent thin disc
- _, flux_thin_disc = lineprofile(gs, ε, m, x, ThinDisc(r_isco, r_out), verbose = true, method = BinningMethod())
+ _, flux_thin_disc = lineprofile(gs, ε, m, x, ThinDisc(r_isco, r_out), verbose = true)
  plot!(gs, flux_thin_disc)
