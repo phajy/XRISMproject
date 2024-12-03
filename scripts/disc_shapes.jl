@@ -46,7 +46,19 @@ pf = redshift ∘ ConstPointFunctions.filter_intersected()
     pf = pf
 )
 
+α, β, img_rho = rendergeodesics(
+    m,
+    x,
+    d,
+    2000.0,
+    αlims = (-25, 25), 
+    βlims = (-15, 18),
+    verbose = true,
+    pf = PointFunction((m, gp, t) -> gp.x[2] * cos(gp.x[3])) ∘ ConstPointFunctions.filter_intersected()
+)
+
 heatmap(α, β, img, aspect_ratio=1)
+contour!(α, β, img_rho ./ 3.0, aspect_ratio=1, color=:black)
 
 # specify an emissivity profile
 ε(r) = r^(-3)
