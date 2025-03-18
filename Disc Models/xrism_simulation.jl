@@ -43,8 +43,8 @@ end
 
 model =
     # XS_Laor(K = FitParam(1.0e-2, frozen = true), lineE = FitParam(6.4, lower_limit = 6.0, upper_limit = 7.0), a = FitParam(0.998, frozen = true), θ = FitParam(30.0)) +
-    MyLPModel(K = FitParam(1.0e-1, frozen = true), a = FitParam(0.998, frozen = true), height = FitParam(10.0, frozen = true), theta = FitParam(30.0, frozen = true), E_line = FitParam(6.4, frozen = true)) +
-    PowerLaw(a = FitParam(2.29), K = FitParam(0.0947))
+    MyLPModel(K = FitParam(8.0e-3, frozen = true), a = FitParam(0.998, frozen = true), height = FitParam(10.0, frozen = true), theta = FitParam(30.0, frozen = true), E_line = FitParam(6.4, frozen = true)) +
+    PowerLaw(a = FitParam(2.29), K = FitParam(1.0e-3))
 
 domain = collect(range(1.0, 8.0, 300))
 flux = invokemodel(domain, model)
@@ -58,7 +58,7 @@ plot(domain[1:end-1], flux)
 # plot(data)
 # plot!(result)
 
-sims = @time simulate(model, data.data.response, data.data.ancillary; exposure_time = 1e5, seed = 42)
+sims = @time simulate(model, data.data.response, data.data.ancillary; exposure_time = 1e6, seed = 42)
 plot(sims, xlims = (2.0, 8.0))
 
 # this can also be rebinned by hand if desired (this will be automated in future)
@@ -77,4 +77,4 @@ end
 
 n = 8   # example rebinning factor
 x_rebinned, y_rebinned, y_err_rebinned = rebin(x, y, y_err, n)
-plot(x_rebinned, y_rebinned, xlims = (2.0, 8.0), legend = false)
+plot(x_rebinned, y_rebinned, xlims = (3.0, 7.0), legend = false, xlabel="Energy (keV)", ylabel="Photons/cm^2/s/keV")
